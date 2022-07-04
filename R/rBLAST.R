@@ -17,3 +17,13 @@ microbial_16s <- download.file("https://ftp.ncbi.nlm.nih.gov/blast/db/16S_riboso
 dir.create("../databases/16SMicrobialD8")
 
 untar("../databases/16S_ribosomal_RNA.tar.gz", exdir = "../databases/16SMicrobialD8/")
+
+# load some test data
+
+seq <- readDNAStringSet(system.file("examples/RNA_example.fasta", 
+                                    package = "rBLAST"))
+seq
+
+# load a BLAST database
+
+bl <- blast(db = "../databases/16SMicrobialD8/")
