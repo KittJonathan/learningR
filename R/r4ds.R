@@ -131,3 +131,5 @@ ggplot(data = diamonds) +
     fun.max = max,
     fun = median
   )
+
+# Position adjustments 
