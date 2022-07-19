@@ -43,4 +43,21 @@ p +
   geom_seq() +  # draw contig/chromosome lines
   geom_seq_label() +  # label each sequence
   geom_gene() +  # draw genes as arrow
-  geom_link(offset = 0.05)  # draw some connections between syntenic regions
+  geom_link()  # draw some connections between syntenic regions
+
+# Geoms and tracks ----
+
+data(package = "gggenomes")
+
+p <- gggenomes(
+  genes = emale_genes,
+  seqs = emale_seqs,
+  links = emale_ava
+)
+
+p %>% track_info()
+
+p +
+  geom_seq() +
+  geom_seq_label() +
+  geom_gene(aes(fill = strand))
