@@ -52,6 +52,7 @@ data(package = "gggenomes")
 p <- gggenomes(
   genes = emale_genes,
   seqs = emale_seqs,
+  feats = list(emale_tirs, emale_ngaros),
   links = emale_ava
 )
 
@@ -59,5 +60,9 @@ p %>% track_info()
 
 p +
   geom_seq() +
-  geom_seq_label() +
-  geom_gene(aes(fill = strand))
+  geom_link() +
+  # geom_seq_label() +
+  geom_gene() +
+  geom_feat() +
+  geom_feat(data = feats(emale_ngaros),
+            colour = "plum3")
