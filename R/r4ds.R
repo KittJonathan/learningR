@@ -193,3 +193,6 @@ bar <- ggplot(data = diamonds) +
 bar
 bar + coord_flip()
 bar + coord_polar()
+
+# Data transformation ----
+
