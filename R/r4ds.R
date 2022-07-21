@@ -7,6 +7,7 @@
 # Load packages ----
 
 library(tidyverse)
+library(nycflights13)
 
 # Data visualisation ----
 
@@ -196,3 +197,27 @@ bar + coord_polar()
 
 # Data transformation ----
 
+# Filter rows with filter()
+filter(flights, month == 1, day == 1)
+jan1 <- filter(flights, month == 1, day == 1)
+(dec25 <- filter(flights, month == 1, day == 25))
+
+sqrt(2) ^ 2 == 2
+1 / 49 * 49 == 1
+
+near(sqrt(2) ^ 2, 2)
+near(1 / 49 * 49, 1)
+
+nov_dec <- filter(flights, month %in% c(11, 12))
+
+filter(flights, !(arr_delay > 120 | dep_delay > 120))
+filter(flights, arr_delay <= 120, dep_delay <= 120)
+
+# Arrange rows with arrange()
+arrange(flights, year, month, day)
+arrange(flights, desc(dep_delay))
+
+# Select columns with select()
+select(flights, year, month, day)
+select(flights, year:day)
+select(flights, -(year:day))
