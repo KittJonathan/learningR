@@ -221,3 +221,28 @@ arrange(flights, desc(dep_delay))
 select(flights, year, month, day)
 select(flights, year:day)
 select(flights, -(year:day))
+select(flights, time_hour, air_time, everything())
+
+# Rename variables with rename()
+rename(flights, tail_num = tailnum)
+
+# Add new variables with mutate()
+flights_sml <- select(flights,
+                      year:day,
+                      ends_with("delay"),
+                      distance,
+                      air_time)
+
+mutate(flights_sml,
+       gain = dep_delay - arr_delay,
+       speed = distance / air_time * 60)
+
+mutate(flights_sml,
+       gain = dep_delay - arr_delay,
+       hours = air_time / 60,
+       gain_per_hour = gain / hours)
+
+transmute(flights_sml,
+          gain = dep_delay - arr_delay,
+          hours = air_time / 60,
+          gain_per_hour = gain / hours)
